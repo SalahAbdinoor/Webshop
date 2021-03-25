@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noor Shop</title>
+    <link rel="stylesheet" href="bootstrap.css" />
+  </head>
+  <body>
+    <nav class="navbar bg-dark fixed-top" style="opacity: 80%">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" alt="logo" width="150" height="70" />
+        </a>
+
+        <div class="row"></div>
+
+        <span> <i></i> </span>
+      </div>
+    </nav>
+
+    <div
+      style="
+        margin-bottom: 10rem;
+        margin-top: 10rem;
+        margin-left: 10rem;
+        margin-right: 10rem;
+      "
+    >
+      <div class="row">
+        <div class="col-lg-3 col-md-4" style="margin-bottom: 4rem">
+          <div class="card h-100">
+            <img
+              id="image"
+              class="card-img-top"
+              src="https:\/\/picsum.photos\/500?random=2"
+              alt="product image"
+            />
+            <div class="card-body">
+              <div class="card-body" style="text-align: center; color: rgb(134, 24, 24)">
+                <h4 class="card-title">
+           
+                    Mens Casual Slim Fit
+                  
+                  </p>
+                </h4>
+              </div>
+
+              <div class="d-flex justify-content-between"  >
+                <h5>XXX kr</h5>
+                <button class="btn btn-secondary" style="align-content: right">
+                  Köp
+                </button>
+              </div>
+
+              <hr />
+              <p style="margin-bottom: 0">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+                numquam aspernatur!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="py-2 bg-secondary fixed-bottom">
+      <p class="m-0 text-center text-white">
+        Copyright &copy; - Noor Shop- 2021
+      </p>
+    </footer>
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <script>
+    
+    $(document).ready(function(){
+      console.log("Yo")
+    });
+
+    fetch("fakestore.json")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+    </script>
+
+  </body>
+</html>
