@@ -12,7 +12,12 @@
       <nav class="navbar bg-dark fixed-top" style="opacity: 80%">
         <div class="container">
           <a class="navbar-brand" href="index.html">
-            <img src="images/logo.png" alt="logo" width="150" height="70" />
+            <img
+              src="images/logo.png"
+              alt="logo"
+              width="150rem"
+              height="80px"
+            />
           </a>
         </div>
       </nav>
@@ -24,14 +29,19 @@
         margin-left: 14rem;
         margin-right: 14rem;
         justify-self: center;
+        border-color: rgb(219, 137, 30);
       "
       class="container"
     >
-      <div class="row" id="cardId"></div>
+      <div
+        class="row"
+        id="cardId"
+        style="border-color: rgb(219, 137, 30)"
+      ></div>
     </div>
     <footer class="py-2 bg-secondary fixed-bottom">
       <p class="m-0 text-center text-white">
-        Copyright &copy; - Noor Shop- 2021
+        Copyright &copy; Noor Shop - 2021
       </p>
     </footer>
 
@@ -41,12 +51,6 @@
       fetch("https://webacademy.se/fakestore/")
         .then((response) => response.json())
         .then((data) => cardGen(data));
-
-      const idList = new Array();
-      const titleList = new Array();
-      const priceList = new Array();
-      const imageList = new Array();
-      const descriptionList = new Array();
 
       const cardGen = (response) => {
         for (let index = 0; index < response.length; index++) {
@@ -80,6 +84,12 @@
                     </div>`;
         }
 
+        const idList = new Array();
+        const titleList = new Array();
+        const priceList = new Array();
+        const imageList = new Array();
+        const descriptionList = new Array();
+
         response.forEach((element) => {
           idList.push(element.id);
           titleList.push(element.title);
@@ -106,8 +116,6 @@
                 );
 
                 localStorage.setItem("product", send);
-                console.log(localStorage);
-                console.log(send);
               }
             });
           });
