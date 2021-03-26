@@ -20,63 +20,50 @@
     </div>
 
     <div class="cart_section" style="margin-top: 10rem">
-        <div class="row">
+      <div class="row">
+        <div
+          class="col-lg-10 offset-lg-1"
+          style="
+            border: solid 1px #e8e8e8;
+            box-shadow: 0px 1px 8px rgb(134, 24, 24);
+            border-color: rgb(219, 137, 30);
+            opacity: 98%;
+          "
+        >
           <div
-            class="col-lg-10 offset-lg-1"
-            style="
-              border: solid 1px #e8e8e8;
-              box-shadow: 0px 1px 8px rgb(134, 24, 24);
-              border-color: rgb(219, 137, 30);
-              opacity: 98%;"
+            class="cart_item_info d-flex flex-md-row flex-column justify-content-between"
+            style="width: calc(100% - 133px); float: left; padding-top: 18px"
           >
-           
             <div
-              class="cart_item_info d-flex flex-md-row flex-column justify-content-between"
-              style="width: calc(100% - 133px); float: left; padding-top: 18px"
+              class="cart_item_image card-img-top"
+              style="margin-bottom: 1rem; max-width: 100%; max-height: 100%"
             >
-          
+              <img
+                id="image"
+                src="#"
+                alt="product"
+                style="border-radius: 10%; width: 300px; height: 300px"
+              />
+            </div>
+
+            <div class="cart_item_name cart_info_col" style="margin-left: 5rem">
+              <div class="cart_item_title" style="margin-right: 4rem">
+                title
+              </div>
+              <div class="cart_item_text" id="title">Title</div>
+            </div>
+
             <div
-            class="cart_item_image card-img-top"
-            style="margin-bottom: 1rem;
-            max-width: 100%;
-            max-height: 100%;"
-          >
-            <img
-            id="image"
-              src="#"
-              alt="product"
-              style="border-radius: 10%; width: 300px; height: 300px;"
-            />
-          </div>
+              class="cart_item_price cart_info_col"
+              style="margin-left: 8rem; margin-right: 4rem"
+            >
+              <div class="cart_item_title">description</div>
+              <div class="cart_item_text" id="description"></div>
+            </div>
 
-              <div
-                class="cart_item_name cart_info_col"
-                style="margin-left: 5rem"
-              >
-                <div class="cart_item_title" style="margin-right: 5rem;" >
-                  title
-                </div>
-                <div class="cart_item_text" id="title">Title</div>
-              </div>
-
-              <div
-                class="cart_item_price cart_info_col"
-                style="margin-left: 8rem; margin-right: 4rem"
-              >
-                <div class="cart_item_title">description</div>
-                <div class="cart_item_text" id="description">
-                  Your perfecd walks Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum fugiat illum perferendis iure soluta similique assumenda neque ducimus, veniam ipsa.
-                </div>
-              </div>
-
-              <div class="cart_item_price cart_info_col">
-                <div class="cart_item_title" style="margin-right: 2em">
-                  Price
-                </div>
-                <div class="cart_item_text" id="price">₹22000</div>
-              </div>
-
-             
+            <div class="cart_item_price cart_info_col">
+              <div class="cart_item_title" style="margin-right: 2em">Price</div>
+              <div class="cart_item_text" id="price"></div>
             </div>
           </div>
         </div>
@@ -105,7 +92,7 @@
             $("#title").html(product.title);
             $("#price").html("$" + product.price);
             $("#description").html(product.description);
-            $('#image').attr('src',product.image);
+            $("#image").attr("src", product.image);
           })
         );
     </script>
