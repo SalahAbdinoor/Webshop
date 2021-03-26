@@ -5,9 +5,109 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="bootstrap.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>Shopping Cart</title>
   </head>
   <body>
+    <div class="nav">
+      <nav class="navbar bg-dark fixed-top" style="opacity: 80%">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="logo" width="150" height="70" />
+          </a>
+        </div>
+      </nav>
+    </div>
 
+    <div class="cart_section" style="margin-top: 10rem">
+        <div class="row">
+          <div
+            class="col-lg-10 offset-lg-1"
+            style="
+              border: solid 1px #e8e8e8;
+              box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
+              
+            "
+          >
+           
+            <div
+              class="cart_item_info d-flex flex-md-row flex-column justify-content-between"
+              style="width: calc(100% - 133px); float: left; padding-top: 18px"
+            >
+          
+            <div
+            class="cart_item_image card-img-top"
+            style="margin-bottom: 1rem;
+            max-width: 100%;
+            max-height: 100%;"
+          >
+            <img
+            id="image"
+              src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560924153/alcatel-smartphones-einsteiger-mittelklasse-neu-3m.jpg"
+              alt=""
+              style="border-radius: 10%;"
+            />
+          </div>
+
+              <div
+                class="cart_item_name cart_info_col"
+                style="margin-left: 5rem"
+              >
+                <div class="cart_item_title" style="margin-right: 5rem;" >
+                  title
+                </div>
+                <div class="cart_item_text" id="title">Title</div>
+              </div>
+
+              <div
+                class="cart_item_price cart_info_col"
+                style="margin-left: 8rem; margin-right: 4rem"
+              >
+                <div class="cart_item_title">description</div>
+                <div class="cart_item_text" id="description">
+                  Your perfecd walks Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum fugiat illum perferendis iure soluta similique assumenda neque ducimus, veniam ipsa.
+                </div>
+              </div>
+
+              <div class="cart_item_price cart_info_col">
+                <div class="cart_item_title" style="margin-right: 2em">
+                  Price
+                </div>
+                <div class="cart_item_text" id="price">₹22000</div>
+              </div>
+
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="py-2 bg-secondary fixed-bottom">
+      <p class="m-0 text-center text-white">
+        Copyright &copy; - Noor Shop- 2021
+      </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <script>
+      fetch("https://webacademy.se/fakestore/")
+        .then((response) => response.json())
+        .then((data) =>
+          $(document).ready(function () {
+            var prodNumber = localStorage
+              .getItem("product")
+              .substr(0, localStorage.getItem("product").indexOf(","));
+
+            var product = data[prodNumber - 1];
+
+            $("#title").html(product.title);
+            $("#price").html("$" + product.price);
+            $("#description").html(product.description);
+            $('#image').attr('src',product.image);
+          })
+        );
+    </script>
   </body>
 </html>

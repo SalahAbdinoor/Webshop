@@ -1,0 +1,9 @@
+.cart_item_title {
+  font-size: 28px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.cart_item_text {
+  font-size: 18px;
+  margin-top: 35px;
+}

@@ -8,51 +8,27 @@
     <link rel="stylesheet" href="bootstrap.css" />
   </head>
   <body>
-    <nav class="navbar bg-dark fixed-top" style="opacity: 80%">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="images/logo.png" alt="logo" width="150" height="70" />
-        </a>
-      </div>
-    </nav>
-
+    <div class="nav">
+      <nav class="navbar bg-dark fixed-top" style="opacity: 80%">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="logo" width="150" height="70" />
+          </a>
+        </div>
+      </nav>
+    </div>
     <div
       style="
         margin-bottom: 10rem;
         margin-top: 10rem;
-        margin-left: 15rem;
-        margin-right: 15rem;
+        margin-left: 14rem;
+        margin-right: 14rem;
+        justify-self: center;
       "
+      class="container"
     >
-      <div class="row">
-        <div class="col-lg-3 col-md-4" style="margin-bottom: 4rem">
-          <div class="card h-100">
-            <img class="card-img-top" src="" alt="product image" />
-            <div class="card-body">
-              <div>
-                <h4
-                  class="card-title"
-                  style="text-align: center; color: rgb(134, 24, 24)"
-                ></h4>
-              </div>
-
-              <div class="d-flex justify-content-between">
-                <h5 class="price"></h5>
-                <button class="btn btn-secondary" style="align-content: right">
-                  Köp
-                </button>
-              </div>
-
-              <hr />
-              <p class="description" style="margin-bottom: 0"></p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="row" id="cardId"></div>
     </div>
-
-    
-
     <footer class="py-2 bg-secondary fixed-bottom">
       <p class="m-0 text-center text-white">
         Copyright &copy; - Noor Shop- 2021
@@ -64,39 +40,79 @@
     <script>
       fetch("https://webacademy.se/fakestore/")
         .then((response) => response.json())
-        .then((data) =>
-          $(document).ready(function () {
-            let counter = 0;
+        .then((data) => cardGen(data));
 
-            title = new Array();
-            description = new Array();
-            image = new Array();
-            category = new Array();
-            price = new Array();
+      const idList = new Array();
+      const titleList = new Array();
+      const priceList = new Array();
+      const imageList = new Array();
+      const descriptionList = new Array();
 
-            data.forEach((element) => {
-              //  let test = element.title;
-              //  $(".card-title").html(test);
+      const cardGen = (response) => {
+        for (let index = 0; index < response.length; index++) {
+          document.getElementById("cardId").innerHTML += `
+          
+          
+          <div class="card col-lg-3 col-md-4"  >
+            <img style="margin-top: 1rem;" class="card-img-top" src="${response[index].image}"  alt="product image" />
+            <div class="card-body">
+              <div>
+                <h4
+                class="card-title"
+                style="text-align: center; color: rgb(134, 24, 24)"
+                >${response[index].title}</h4>
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                  <h5 class="price">$${response[index].price}</h5>
+                  <a href="shoppingcart.html"><button class="btn btn-secondary"; value="${response[index].id}" style="align-content: right">
+                    Köp
+                    </button>
+                  </a>
+                    </div>
+                    
+                    
+                    <hr />
+                    <p class="description" style="margin-bottom: 0">${response[index].description}</p>
+                    
+                    </div>
+                    
+                    </div>`;
+        }
 
-              title.push(element.title);
-              description.push(element.description);
-              image.push(element.image);
-              price.push(element.price);
-              category.push(element.category);
-              counter++;
-            });
+        response.forEach((element) => {
+          idList.push(element.id);
+          titleList.push(element.title);
+          priceList.push(element.price);
+          imageList.push(element.image);
+          descriptionList.push(element.description);
+        });
 
-            $("row").ready(function () {
-              for (let index = 0; index < counter; index++) {
-                $(".card-title").html(title[index]);
-                $(".price").html(price[index] + " Kr");
-                $(".card-img-top").attr("src", image[index]);
-                $(".description").html(description[index]);
+        $(document).ready(function () {
+          $("button").click(function () {
+            response.forEach((element) => {
+              let send = new Array();
+
+              if (this.value == element.id) {
+                send.push(
+                  idList[element.id - 1],
+                  titleList[element.id - 1],
+
+                  priceList[element.id - 1],
+
+                  imageList[element.id - 1],
+
+                  descriptionList[element.id - 1]
+                );
+
+                localStorage.setItem("product", send);
+                console.log(localStorage);
+                console.log(send);
               }
-              console.log(price);
             });
-          })
-        );
+          });
+        });
+      };
     </script>
   </body>
 </html>
