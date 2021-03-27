@@ -55,7 +55,7 @@
 
             <div
               class="cart_item_price cart_info_col"
-              style="margin-left: 8rem; margin-right: 4rem"
+              style="margin-left: 8rem; margin-right: 4rem; margin-bottom: 1rem"
             >
               <div class="cart_item_title">description</div>
               <div class="cart_item_text" id="description"></div>
@@ -69,6 +69,62 @@
         </div>
       </div>
     </div>
+
+    <form
+      class="needs-validation"
+      novalidate=""
+      style="
+        margin-top: 4rem;
+        margin-left: 10rem;
+        margin-right: 10rem;
+        margin-bottom: 10rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>First name</label>
+          <input class="form-control" placeholder="Salah" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Last name</label>
+          <input class="form-control" placeholder="Abdinoor" />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email">E-mail</label>
+        <input
+          class="form-control"
+          placeholder="salah.abdinoor@yh.nackademin.se"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>City</label>
+          <input class="form-control" placeholder="Stockholm" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Adress</label>
+          <input class="form-control" placeholder="Kvarnhagsgatan 78" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>State</label>
+          <input class="form-control" placeholder="Hässelby" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>ZIP-Code</label>
+          <input class="form-control" placeholder="165 54" />
+        </div>
+      </div>
+      <hr
+        style="color: rgb(134, 24, 24); height: 2px; border: none"
+        class="mb-4"
+      />
+      <button class="btn btn-secondary btn-lg">Checkout</button>
+    </form>
 
     <footer class="py-2 bg-secondary fixed-bottom">
       <p class="m-0 text-center text-white">
@@ -93,6 +149,8 @@
             $("#price").html("$" + product.price);
             $("#description").html(product.description);
             $("#image").attr("src", product.image);
+
+            // Checkout prompt
           })
         );
     </script>
