@@ -48,16 +48,16 @@
 
             <div class="cart_item_name cart_info_col" style="margin-left: 5rem">
               <div class="cart_item_title" style="margin-right: 4rem">
-                title
+                Title
               </div>
-              <div class="cart_item_text" id="title">Title</div>
+              <div class="cart_item_text" id="title"></div>
             </div>
 
             <div
               class="cart_item_price cart_info_col"
               style="margin-left: 8rem; margin-right: 4rem; margin-bottom: 1rem"
             >
-              <div class="cart_item_title">description</div>
+              <div class="cart_item_title">Description</div>
               <div class="cart_item_text" id="description"></div>
             </div>
 
@@ -82,49 +82,108 @@
     >
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label>First name</label>
-          <input class="form-control" placeholder="Salah" />
+          <label class="form-label"> First name</label>
+          <input
+            id="firstname-input"
+            class="form-control"
+            placeholder="Salah"
+            type="text"
+          />
+          <div class="feedback alert alert-danger" id="firstname-div">
+            Fill in firstname
+          </div>
         </div>
         <div class="col-md-6 mb-3">
           <label>Last name</label>
-          <input class="form-control" placeholder="Abdinoor" />
+
+          <input
+            id="lastname-input"
+            class="form-control"
+            placeholder="Abdinoor"
+          />
+          <div class="feedback alert alert-danger" id="lastname-div">
+            Fill in lastname
+          </div>
         </div>
       </div>
 
-      <div class="mb-3">
-        <label for="email">E-mail</label>
-        <input
-          class="form-control"
-          placeholder="salah.abdinoor@yh.nackademin.se"
-        />
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>Email</label>
+          <input
+            id="email-input"
+            class="form-control"
+            placeholder="salah.Abdinoor@yh.nackademin.se"
+          />
+          <div class="feedback alert alert-danger" id="email-div">
+            Fill in email
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Phone</label>
+
+          <input
+            id="phone-input"
+            class="form-control"
+            placeholder="0723166610"
+          />
+          <div class="feedback alert alert-danger" id="phone-div">
+            Fill in phonenumber
+          </div>
+        </div>
       </div>
 
       <div class="row">
         <div class="col-md-6 mb-3">
           <label>City</label>
-          <input class="form-control" placeholder="Stockholm" />
+          <input id="city-input" class="form-control" placeholder="Stockholm" />
+          <div class="feedback alert alert-danger" id="city-div">
+            Fill in city
+          </div>
         </div>
         <div class="col-md-6 mb-3">
-          <label>Adress</label>
-          <input class="form-control" placeholder="Kvarnhagsgatan 78" />
+          <label>Address</label>
+          <input
+            id="address-input"
+            class="form-control"
+            placeholder="Kvarnhagsgatan 78"
+          />
+          <div class="feedback alert alert-danger" id="address-div">
+            Fill in address
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 mb-3">
           <label>State</label>
-          <input class="form-control" placeholder="Hässelby" />
+          <input id="state-input" class="form-control" placeholder="Hässelby" />
+          <div class="feedback alert alert-danger" id="state-div">
+            Fill in state
+          </div>
         </div>
         <div class="col-md-6 mb-3">
           <label>ZIP-Code</label>
-          <input class="form-control" placeholder="165 54" />
+
+          <input id="zipcode-input" class="form-control" placeholder="165 54" />
+          <div class="feedback alert alert-danger" id="zipcode-div">
+            Fill in zipcode
+          </div>
         </div>
       </div>
       <hr
         style="color: rgb(134, 24, 24); height: 2px; border: none"
         class="mb-4"
       />
-      <button class="btn btn-secondary btn-lg">Checkout</button>
+      <input
+        type="button"
+        id="checkout"
+        class="btn btn-secondary btn-lg"
+        value="Checkout"
+        onclick="valid()"
+      />
     </form>
+
+    
 
     <footer class="py-2 bg-secondary fixed-bottom">
       <p class="m-0 text-center text-white">
@@ -139,6 +198,8 @@
         .then((response) => response.json())
         .then((data) =>
           $(document).ready(function () {
+            $(".feedback").hide();
+
             var prodNumber = localStorage
               .getItem("product")
               .substr(0, localStorage.getItem("product").indexOf(","));
@@ -149,10 +210,40 @@
             $("#price").html("$" + product.price);
             $("#description").html(product.description);
             $("#image").attr("src", product.image);
-
-            // Checkout prompt
           })
         );
+
+      function valid() {
+        var firstname = document.getElementById("firstname-input").value;
+        var lastname = document.getElementById("lastname-input").value;
+        var email = document.getElementById("email-input").value;
+        var phone = document.getElementById("phone-input").value;
+        var city = document.getElementById("city-input").value;
+        var address = document.getElementById("address-input").value;
+        var state = document.getElementById("state-input").value;
+        var zipcode = document.getElementById("zipcode-input").value;
+
+        console.log("valid");
+
+        if (
+          !firstname ||
+          !lastname ||
+          !email ||
+          !phone ||
+          !city ||
+          !address ||
+          !state ||
+          !zipcode
+        ) {
+          $(".feedback").show();
+          alert("fill form correctly");
+        } else if (isNaN(zipcode) || isNaN(phone)) {
+          $(".feedback").show();
+          alert("fill numbers correctly");
+        } else {
+          window.open("index.html", "_self");
+        }
+      }
     </script>
   </body>
 </html>
